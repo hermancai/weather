@@ -5,13 +5,13 @@ class PageManager {
         var rm = new RequestManager();
         var tb = new TableBuilder();
 
-        document.getElementById("search-button").addEventListener("click", () => {
-            this.searchQuery(rm, tb);
-        })
+        document.getElementById("search-button").addEventListener("click", () => {this.searchQuery(rm, tb);});
     }
 
     searchQuery(rm, tb) {
         var query = document.getElementById("search-input").value;
+        if (!query) query = "san francisco";
+
         rm.getCoordinates(query)
             .then(coordinates => {
                 var lat = coordinates[0].lat;
