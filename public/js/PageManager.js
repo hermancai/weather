@@ -14,9 +14,18 @@ class PageManager {
 
         rm.getCoordinates(query)
             .then(coordinates => {
-                var lat = coordinates[0].lat;
-                var long = coordinates[0].lon;
-                console.log(lat, long);
+                if (coordinates.length == 0) {
+                    alert("The city could not be found."); 
+                }
+                else {
+                    var lat = coordinates[0].lat;
+                    var lon = coordinates[0].lon;
+
+                    rm.getForecast(lat, lon)
+                        .then(results => {
+                            tb.displayResults(results, lat, lon);
+                        });
+                }
             });
     }
 }
