@@ -1,0 +1,3 @@
+class TableBuilder {
+    constructor() {}
+}
