@@ -15,15 +15,12 @@ class PageManager {
         rm.getCoordinates(query)
             .then(coordinates => {
                 if (coordinates.length == 0) {
-                    alert("The city could not be found."); 
+                    alert("No results were found."); 
                 }
                 else {
-                    var lat = coordinates[0].lat;
-                    var lon = coordinates[0].lon;
-
-                    rm.getForecast(lat, lon)
+                    rm.getForecast(coordinates[0].lat, coordinates[0].lon)
                         .then(results => {
-                            tb.displayResults(results, lat, lon);
+                            tb.displayResults(results);
                         });
                 }
             });
