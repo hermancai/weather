@@ -40,18 +40,33 @@ class TableBuilder {
         if (hh >= 12) { half = "PM"; }
         if (hh > 12) { hh = hh % 12; }
         if (hh == 0) { hh = 12; }
+        if (mm < 10) { mm = "0" + mm; }
 
         return hh + ":" + mm + " " + half;
     }
 
 
     fillTable(results) {
-        var table = document.getElementById("daily-table");
+        this.fillWeekdayRow(results);
+        
+        // TODO: fill remaining rows
+    }
 
-        for (var i = 0, row; row = table.rows[i]; i++) {
-            for (var j = 1, col; col = row.cells[j]; j++) {
-                col.innerHTML = i + ", " + j;
-            }
+
+    fillWeekdayRow(results) {
+        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        var weekdayRow = document.getElementById("weekday-row");
+
+        // get today's week index (0 - 6)
+        var currentDay = new Date((results.daily[0].dt + results.timezone_offset) * 1000);
+        var dayIndex = currentDay.getUTCDay();
+
+        for (var i = 1, cell; cell = weekdayRow.cells[i]; i++) {
+            cell.innerHTML = days[(dayIndex + i - 1) % 7];
+            currentDay = new Date((results.daily[i - 1].dt + results.timezone_offset) * 1000);
+            cell.innerHTML += " " + currentDay.getUTCMonth() + "/" + currentDay.getUTCDate() + "<br>";
+            cell.innerHTML += '<img src="' + this.getImagePath(results.daily[i - 1].weather[0].icon) + '">';
+            cell.innerHTML += "<br>" + results.daily[i - 1].weather[0].description;
         }
     }
 
