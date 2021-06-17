@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 p {
     margin: 0;
 }
@@ -14,7 +18,7 @@ img {
 #search-container {
     display: flex;
     justify-content: center;
-    padding-top: 2%;
+    padding-top: 1%;
 }
 
 #search-input {
@@ -26,6 +30,8 @@ img {
 #current-container {
     display: flex;
     justify-content: center;
+    margin: 1% 0 1% 0;
+    padding: 1%;
 }
 
 #current-left-column {
@@ -41,4 +47,18 @@ img {
 
 #current-temp {
     font-size: 2em;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+#daily-container {
+    display: flex;
+    justify-content: center;
 }
