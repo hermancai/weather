@@ -1,47 +1,9 @@
 class TableBuilder {
-    constructor() {
-        this.tableExists = false;
-    }
+    constructor() {}
 
 
     displayResults(results, lat, lon) {
-        console.log(lat, lon);
-        console.log(results);
-
-        if (!this.tableExists) {
-            this.buildCurrent();
-            this.buildTable();
-            this.tableExists = true;
-        }
-
         this.fillCurrent(results, lat, lon);
-    }
-
-
-    buildCurrent() {
-        var leftColumn = document.getElementById("current-left-column");
-        leftColumn.appendChild(this.createNewElement("p", "current-time"));
-        leftColumn.appendChild(this.createNewElement("p", "current-temp"));
-        leftColumn.appendChild(this.createNewElement("img", "current-img"));
-        leftColumn.appendChild(this.createNewElement("p", "current-conditions"));
-
-        var rightColumn = document.getElementById("current-right-column");
-        rightColumn.appendChild(this.createNewElement("p", "current-sunrise"));
-        rightColumn.appendChild(this.createNewElement("p", "current-sunset"));
-        rightColumn.appendChild(this.createNewElement("p", "current-windspeed"));
-        rightColumn.appendChild(this.createNewElement("p", "current-coordinates"));
-    }
-
-
-    createNewElement(type, elementId) {
-        var element = document.createElement(type);
-        element.id = elementId;
-        return element;
-    }
-
-
-    buildTable() {
-        
     }
 
 
