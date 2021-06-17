@@ -1,15 +1,44 @@
-#page-container, #search-container {
+p {
+    margin: 0;
+}
+
+img {
+    align-self: center;
+}
+
+#page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+#search-input {
+    width: 25%;
+    min-width: 300px;
+    padding: 10px;
+}
+
+#current-container {
     display: flex;
     justify-content: center;
 }
 
-#search-container {
-    padding-top: 50px;
-    width: 50%;
+#current-left-column {
+    text-align: center;
+    margin-right: 2%;
+    align-self: center;
 }
 
-#search-input {
-    width: 50%;
-    min-width: 300px;
-    padding: 10px;
+#current-right-column {
+    margin-left: 2%;
+    align-self: center;
+}
+
+#current-temp {
+    font-size: 2em;
 }
