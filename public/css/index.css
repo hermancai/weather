@@ -61,4 +61,6 @@ table, td {
 #daily-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    visibility: hidden;
 }

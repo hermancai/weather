@@ -10,7 +10,7 @@ class TableBuilder {
 
 
     fillCurrent(results) {
-        document.getElementById("current-time").innerHTML = this.convertToTime(results.current.dt + results.timezone_offset);
+        document.getElementById("current-time").innerHTML = this.convertToTime(results.current.dt + results.timezone_offset) + "*";
         document.getElementById("current-temp").innerHTML = Math.round(results.current.temp) + "\xB0";
         document.getElementById("current-img").src = this.getImagePath(results.current.weather[0].icon);
         document.getElementById("current-conditions").innerHTML = results.current.weather[0].description;
@@ -48,8 +48,9 @@ class TableBuilder {
 
     fillTable(results) {
         this.fillWeekdayRow(results);
-        
-        // TODO: fill remaining rows
+        this.fillTempRow(results);
+        this.fillSunRow(results);
+        this.fillMoonRow(results);
     }
 
 
@@ -67,6 +68,35 @@ class TableBuilder {
             cell.innerHTML += " " + currentDay.getUTCMonth() + "/" + currentDay.getUTCDate() + "<br>";
             cell.innerHTML += '<img src="' + this.getImagePath(results.daily[i - 1].weather[0].icon) + '">';
             cell.innerHTML += "<br>" + results.daily[i - 1].weather[0].description;
+        }
+    }
+
+
+    fillTempRow(results) {
+        var tempRow = document.getElementById("temp-row");
+
+        for (var i = 1, cell; cell = tempRow.cells[i]; i++) {
+            cell.innerHTML = results.daily[i - 1].temp.min + "\xB0 - " + results.daily[i - 1].temp.max + "\xB0";
+        }
+    }
+
+
+    fillSunRow(results) {
+        var sunRow = document.getElementById("sun-row");
+
+        for (var i = 1, cell; cell = sunRow.cells[i]; i++) {
+            cell.innerHTML = this.convertToTime(results.daily[i - 1].sunrise + results.timezone_offset);
+            cell.innerHTML += " - ";
+            cell.innerHTML += this.convertToTime(results.daily[i - 1].sunset + results.timezone_offset);
+        }
+    }
+
+
+    fillMoonRow(results) {
+        var moonRow = document.getElementById("moon-row");
+
+        for (var i = 1, cell; cell = moonRow.cells[i]; i++) {
+            cell.innerHTML = results.daily[i - 1].moon_phase;
         }
     }
 
