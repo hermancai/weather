@@ -28,7 +28,7 @@ class PageManager {
                     rm.getForecast(coordinates[0].lat, coordinates[0].lon)
                         .then(results => {
                             tb.displayResults(results);
-                            document.getElementById("daily-container").style.visibility = "visible";
+                            document.getElementById("daily-container").style.opacity = "1";
                         });
                 }
             });
