@@ -6,6 +6,12 @@ class PageManager {
         var tb = new TableBuilder();
 
         document.getElementById("search-button").addEventListener("click", () => {this.searchQuery(rm, tb);});
+        document.getElementById("search-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("search-button").click();
+            }
+        });
     }
 
     searchQuery(rm, tb) {
