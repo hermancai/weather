@@ -15,6 +15,7 @@ class PageManager {
     }
 
     searchQuery(rm, tb) {
+        this.timeOutButton(document.getElementById("search-button"));
         var query = document.getElementById("search-input").value;
         if (!query) query = "san francisco";
 
@@ -31,6 +32,13 @@ class PageManager {
                         });
                 }
             });
+    }
+
+    timeOutButton(button) {
+        button.disabled = true;
+        setTimeout(function() {
+            button.disabled = false;
+        }, 2000);
     }
 }
 
