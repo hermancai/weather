@@ -30,8 +30,8 @@
                 <table id="daily-table">
                     <tbody>
                         <tr id="weekday-row">
-                            <td></td>
-                            <td></td>
+                            <td id="empty-cell"></td>
+                            <td class="current-day"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -41,8 +41,8 @@
                             <td></td>
                         </tr>
                         <tr id="temp-row">
-                            <td>Low - High</td>
-                            <td></td>
+                            <td>Low<br><br>High</td>
+                            <td class="current-day"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -51,9 +51,9 @@
                             <td></td>
                             <td></td>
                         </tr>
-                        <tr id="sun-row">
-                            <td>Sunrise - Sunset</td>
-                            <td></td>
+                        <tr id="rain-row">
+                            <td>Chance of Rain</td>
+                            <td class="current-day"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -64,7 +64,7 @@
                         </tr>
                         <tr id="moon-row">
                             <td>Moon Phase*</td>
-                            <td></td>
+                            <td class="current-day"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -76,9 +76,8 @@
                     </tbody>
                 </table>
                 <div id="footnote-container">
-                    <p>*All displayed times are local to the searched location.</p>
-                    <p>**Moon phase: 0 and 1 are 'new moon', 0.25 is 'first quarter moon', 
-                        0.5 is 'full moon' and 0.75 is 'last quarter moon'. </p>
+                    <p><small>*Moon phase: 0 and 1 are 'new moon', 0.25 is 'first quarter moon', 
+                        0.5 is 'full moon' and 0.75 is 'last quarter moon'.</small></p>
                 </div>    
             </div>
         </div>

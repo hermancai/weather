@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 p {
@@ -54,8 +55,9 @@ table {
     text-align: center;
 }
 
-table, td {
-    border: 1px solid black;
+td {
+    border: 1px solid #adadad;
+    padding: 15px;
 }
 
 #daily-container {
@@ -64,4 +66,17 @@ table, td {
     flex-direction: column;
     visibility: hidden;
     margin: auto;
+}
+
+#footnote-container {
+    color: gray;
+}
+
+#empty-cell {
+    border-top: none;
+    border-left:none;
+}
+
+.current-day {
+    background-color: #e8f7ff;
 }

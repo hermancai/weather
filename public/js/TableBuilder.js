@@ -12,10 +12,10 @@ class TableBuilder {
     fillCurrent(results) {
         document.getElementById("current-temp").innerHTML = Math.round(results.current.temp) + "\xB0";
         document.getElementById("current-img").src = this.getImagePath(results.current.weather[0].icon);
-        document.getElementById("current-conditions").innerHTML = results.current.weather[0].description;
+        document.getElementById("current-conditions").innerHTML = "<small>" + results.current.weather[0].description + "</small>";
         
         document.getElementById("current-time").innerHTML = 
-            "Local Time: " + this.convertToTime(results.current.dt + results.timezone_offset) + "*";
+            "Local Time: " + this.convertToTime(results.current.dt + results.timezone_offset);
         document.getElementById("current-sunrise").innerHTML = 
             "Sunrise: " + this.convertToTime(results.current.sunrise + results.timezone_offset);
         document.getElementById("current-sunset").innerHTML = 
@@ -51,7 +51,7 @@ class TableBuilder {
     fillTable(results) {
         this.fillWeekdayRow(results);
         this.fillTempRow(results);
-        this.fillSunRow(results);
+        this.fillRainRow(results);
         this.fillMoonRow(results);
     }
 
@@ -69,7 +69,7 @@ class TableBuilder {
             currentDay = new Date((results.daily[i - 1].dt + results.timezone_offset) * 1000);
             cell.innerHTML += " " + currentDay.getUTCMonth() + "/" + currentDay.getUTCDate() + "<br>";
             cell.innerHTML += '<img src="' + this.getImagePath(results.daily[i - 1].weather[0].icon) + '">';
-            cell.innerHTML += "<br>" + results.daily[i - 1].weather[0].description;
+            cell.innerHTML += "<br><small>" + results.daily[i - 1].weather[0].description + "</small>";
         }
     }
 
@@ -78,18 +78,16 @@ class TableBuilder {
         var tempRow = document.getElementById("temp-row");
 
         for (var i = 1, cell; cell = tempRow.cells[i]; i++) {
-            cell.innerHTML = results.daily[i - 1].temp.min + "\xB0 - " + results.daily[i - 1].temp.max + "\xB0";
+            cell.innerHTML = results.daily[i - 1].temp.min + "\xB0<br><br>" + results.daily[i - 1].temp.max + "\xB0";
         }
     }
 
 
-    fillSunRow(results) {
-        var sunRow = document.getElementById("sun-row");
+    fillRainRow(results) {
+        var rainRow = document.getElementById("rain-row");
 
-        for (var i = 1, cell; cell = sunRow.cells[i]; i++) {
-            cell.innerHTML = this.convertToTime(results.daily[i - 1].sunrise + results.timezone_offset);
-            cell.innerHTML += " - ";
-            cell.innerHTML += this.convertToTime(results.daily[i - 1].sunset + results.timezone_offset);
+        for (var i = 1, cell; cell = rainRow.cells[i]; i++) {
+            cell.innerHTML = Math.round((results.daily[i - 1].pop * 100)) + "%";
         }
     }
 
