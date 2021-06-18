@@ -46,7 +46,7 @@ img {
 }
 
 #current-temp {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 table {
@@ -63,4 +63,5 @@ table, td {
     justify-content: center;
     flex-direction: column;
     visibility: hidden;
+    margin: auto;
 }

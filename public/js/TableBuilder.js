@@ -10,16 +10,18 @@ class TableBuilder {
 
 
     fillCurrent(results) {
-        document.getElementById("current-time").innerHTML = this.convertToTime(results.current.dt + results.timezone_offset) + "*";
         document.getElementById("current-temp").innerHTML = Math.round(results.current.temp) + "\xB0";
         document.getElementById("current-img").src = this.getImagePath(results.current.weather[0].icon);
         document.getElementById("current-conditions").innerHTML = results.current.weather[0].description;
-
+        
+        document.getElementById("current-time").innerHTML = 
+            "Local Time: " + this.convertToTime(results.current.dt + results.timezone_offset) + "*";
         document.getElementById("current-sunrise").innerHTML = 
             "Sunrise: " + this.convertToTime(results.current.sunrise + results.timezone_offset);
         document.getElementById("current-sunset").innerHTML = 
             "Sunset: " + this.convertToTime(results.current.sunset + results.timezone_offset);
-        document.getElementById("current-windspeed").innerHTML = "Wind Speed: " + results.current.wind_speed + " miles/hour";
+        document.getElementById("current-windspeed").innerHTML = 
+            "Wind Speed: " + results.current.wind_speed + " miles/hour";
         document.getElementById("current-coordinates").innerHTML = 
             "Coordinates: " + results.lat.toFixed(2) + ", " + results.lon.toFixed(2);
     }
